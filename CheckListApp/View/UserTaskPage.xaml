@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CheckListApp.View.UserTaskPage"
+             xmlns:viewmodel="clr-namespace:CheckListApp.ViewModels"
+             xmlns:model="clr-namespace:CheckListApp.Model"
+             Title="User Tasks"
+             x:Name="UserTaskPageRoot">
+
+    <Grid RowDefinitions="Auto,*">
+        <Label Text="{Binding CurrentUser.Username, StringFormat='Welcome, {0}!'}"
+               FontSize="Large"
+               Margin="20,10"/>
+
+        <RefreshView Grid.Row="1" 
+                     Command="{Binding LoadUserAndTasksCommand}"
+                     IsRefreshing="{Binding IsLoading}">
+            <CollectionView ItemsSource="{Binding UserTasks}"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:UserTask">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Red"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserTaskViewModel}}, Path=DeleteTaskCommand}"
+                                               CommandParameter="{Binding .}"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Grid Padding="10">
+                                <Frame>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UserTaskViewModel}}, Path=SelectTaskCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}" 
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Description}" 
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding DueDate, StringFormat='Due: {0:d}'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

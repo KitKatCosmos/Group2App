@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CheckListApp.View.ItemDetailPage"
+             Title="Task Detail">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Margin="20">
+
+            <!-- Task Detail Section -->
+            <Frame x:Name="TaskDetailContent" IsVisible="true" BackgroundColor="White">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="TitleLabel" FontSize="20" FontAttributes="Bold" Text="Task Title" />
+
+                    <Label Text="Your Task:" />
+                    <Entry x:Name="TaskEntry" Placeholder="Enter your name" />
+
+                    <Label Text="Description:" />
+                    <Entry x:Name="DescriptionEntry" Placeholder="Enter task description" />
+
+                    <Label Text="Priority:" />
+                    <Entry x:Name="PriorityEntry" Placeholder="Enter priority level" />
+
+                    <Label Text="DueDate:" />
+                    <Entry x:Name="DueDateEntry" Placeholder="Enter due date" />
+
+                    <Label x:Name="RepeatInfoLabel" IsVisible="false" Text="Repeat Information" />
+                    <Label x:Name="CreatedDateLabel" Text="Created Date" />
+                    <Label x:Name="UpdatedDateLabel" Text="Last Updated" />
+
+                    <HorizontalStackLayout>
+                        <Label Text="Completed: " VerticalOptions="Center" />
+                        <CheckBox x:Name="IsCompletedCheckBox" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <Label x:Name="ResultLabel" Text="Saved Data will appear here." Margin="0,20,0,0"/>
+
+                    <Button Text="Save" Clicked="OnSaveDataClicked"/>
+                    <Button Text="Delete" Clicked="OnDeleteClicked"  BackgroundColor="Red"/>
+                    <Button Text="Edit" Clicked="OnEditDataClicked"/>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

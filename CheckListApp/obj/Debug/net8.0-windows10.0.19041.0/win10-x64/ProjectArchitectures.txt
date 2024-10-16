@@ -1,0 +1,1 @@
+C:\Users\ray_g\source\repos\CheckListApp\CheckListApp\CheckListApp.csproj;x64

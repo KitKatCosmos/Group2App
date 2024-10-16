@@ -1,0 +1,26 @@
+Summary of User Information:
+user1:
+
+Username: user1
+Password: Password123!
+Email: user1@example.com
+user2:
+
+Username: user2
+Password: MyPassword!
+Email: user2@example.com
+user3:
+
+Username: user3
+Password: Admin2023$
+Email: user3@example.com
+user4:
+
+Username: user4
+Password: Secret@987
+Email: user4@example.com
+user5:
+
+Username: user5
+Password: Passw0rd$
+Email: user5@example.com
